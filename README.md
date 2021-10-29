@@ -1,37 +1,15 @@
 # Person-Detection-and-Counting
 To identify key regions of productivity based on Facial Recognition, People Counting and Duration (the time spent inside the designated regions) 
-# Foobar
 
-Foobar is a Python library for dealing with word pluralization.
+## Clone this Repository 
 
-## Installation
+Open Terminal.
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Change the current working directory to the location where you want the cloned directory.
+
+Type ```bash git clone```, and then paste the URL you copied earlier.
 
 ```bash
-pip install foobar
+$ git clone https://github.com/sulaihasubi/Person-Detection-and-Counting
 ```
-
-## Usage
-
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
 
