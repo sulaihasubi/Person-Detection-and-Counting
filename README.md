@@ -13,3 +13,6 @@ To identify key regions of productivity based on Facial Recognition, People Coun
 $ git clone https://github.com/sulaihasubi/Person-Detection-and-Counting
 ```
 
+## Result 
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
