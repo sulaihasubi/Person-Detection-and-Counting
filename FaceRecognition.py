@@ -14,9 +14,8 @@ import os
 from datetime import datetime
 import numpy as np  # for mathematical operations
 
-
 # path = '/Users/risehill/Documents/15-Aerodyne/FaceDetectionVideo/faceDatabase'
-path = 'faceDatabase'
+path = r'faceDatabase'
 images = []
 classNames = []
 count = 0  # this is for counting frame from the video read
@@ -38,6 +37,7 @@ def findEncodings(images):
         encodeList.append(encode)
     return encodeList
 
+
 encodeListKnown = findEncodings(images)
 print(len(encodeListKnown))
 print('Encoding Complete')
@@ -53,25 +53,31 @@ total_frames = 0
 length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-rate = cap.get(cv2.CAP_PROP_FPS)
-
+fps_milisec = int(cap.get(cv2.CAP_PROP_POS_MSEC))
+fps_value = cap.get(cv2.CAP_PROP_FPS)
 
 # Print details
 print("Total Frames:", length)
 print("Frames Width:", width)
 print("Frames Height:", height)
-print("Frames Rate:", rate)
+print("Frames Rate Milisec:", fps_milisec)
+print("Frames Rate:", fps_value)
 
 # Start calculate the duration of recognised person
 # fps_start_time = datetime.now()
-fps = 0
+# fps = 0
 
 # Creating dictionary to count duration
 object_id_list = []
 dtime = dict()
 dwell_time = dict()
 dwell_time2 = dict()
+
+# Creating dictionary to count duration of recognised person
 total_frames = 0
+object_id_list2 = []
+framesCount = dict()
+countEntity = dict()
 
 # Export the video results
 frame_width = int(cap.get(3))
@@ -114,17 +120,14 @@ currentFrame = 0
 frame_counter = 0
 outputFrameIndices = []
 
-# For testing
-faceFound = []
-ts = [0,0,False]
-
-
 while True:
     success, img = cap.read()
 
     # Extract the frame
     ret, frame = cap.read()  # read current frame
     milisec = cap.get(cv2.CAP_PROP_POS_MSEC)
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    totalFrames = int(cap.get(cv2.CAP_PROP_POS_FRAMES))
 
     # FPS Value
     # cTime = time.time()
@@ -150,7 +153,6 @@ while True:
     #         print(id, detection)
     #         print(detection.score)
     #         print(detection.location_data.relative_bounding_box)
-
 
     person = 1
     for encodeFace, faceLoc in zip(encodesCurFrame, facesCurFrame):
@@ -184,12 +186,42 @@ while True:
             # Capture frame-by-frame and count the its timestamp
             frame_counter = frame_counter + 1
             outputFrameIndices.append(frame_counter)
+            # print(outputFrameIndices)
+
             frame_timestamp = milisec
+            countTimePresent = len(outputFrameIndices) / fps
+
             if frame is None:
                 break
-            print(name, frame_counter, frame_timestamp)
+            # print(name, frame_counter, countTimePresent)
+
+            # Testing to count the frame by assigning the id to the person detected in the frames
+            # time when we finish processing for this frame
+            new_frame_time = time.time()
+
+            # used to record the time when we processed last frame
+            prev_frame_time = 0
+
+            # used to record the time at which we processed current frame
+            new_frame_time = 0
+
+            # Loop to calculate the person present in the frame, detect one by one of the person present
+            if name not in object_id_list2:
+                object_id_list2.append(name)
+                framesCount[name] = frame_counter
+                countEntity[name] = 1
+            else:
+                curr_frame = new_frame_time
+                prev_frame_time = framesCount[name]
+                framesCount[name] = new_frame_time
+                diff = curr_frame - prev_frame_time
+                # seccs = 1 / (curr_frame - prev_frame_time)
+
+            duration2 = "{} | {}".format(name, int(countEntity[name]))
+            print(duration2)
 
             # Model for calculation: Calculate duration of detected faces (people)
+            # Start the timer when a person arrives in the area and stop it when they leaves
             if name not in object_id_list:
                 object_id_list.append(name)
                 dtime[name] = datetime.now()
@@ -221,7 +253,7 @@ while True:
             y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
             cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
             cv2.rectangle(img, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
-            cv2.putText(img, duration, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
+            cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
             cv2.putText(img, f'Number of People in Non-Productive(PT):{person - 1}', (10, 50),
                         cv2.FONT_HERSHEY_COMPLEX, 2, (0, 0, 255), 3)
             # cv2.putText(img, f'Timestamp:{timestamp}', (10, 100), cv2.FONT_HERSHEY_COMPLEX, 2, (255, 0, 255), 3)
