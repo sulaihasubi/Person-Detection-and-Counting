@@ -14,5 +14,5 @@ $ git clone https://github.com/sulaihasubi/Person-Detection-and-Counting
 ```
 
 ## Result 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](https://github.com/sulaihasubi/Person-Detection-and-Counting/blob/main/video-results/enter-non-productive.gif)
 
