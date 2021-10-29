@@ -193,7 +193,7 @@ while True:
 
             if frame is None:
                 break
-            # print(name, frame_counter, countTimePresent)
+            print(name, frame_counter, countTimePresent)
 
             # Testing to count the frame by assigning the id to the person detected in the frames
             # time when we finish processing for this frame
@@ -215,7 +215,9 @@ while True:
                 prev_frame_time = framesCount[name]
                 framesCount[name] = new_frame_time
                 diff = curr_frame - prev_frame_time
-                # seccs = 1 / (curr_frame - prev_frame_time)
+                seccs = 1 / (curr_frame - prev_frame_time)
+
+                countEntity[name] +=seccs  
 
             duration2 = "{} | {}".format(name, int(countEntity[name]))
             print(duration2)
