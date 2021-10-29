@@ -1,4 +1,4 @@
-# Person-Detection-and-Counting
+# Face Recognition, People Counting and People Duration
 To identify key regions of productivity based on Facial Recognition, People Counting and Duration (the time spent inside the designated regions) 
 
 ## Clone this Repository 
