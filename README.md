@@ -14,5 +14,6 @@ $ git clone https://github.com/sulaihasubi/Person-Detection-and-Counting
 ```
 
 ## Result 
+1. Face Recognition, count people based on the number of individuals detected. 
 ![Alt Text](https://github.com/sulaihasubi/Person-Detection-and-Counting/blob/main/video-results/enter-non-productive.gif)
 
