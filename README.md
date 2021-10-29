@@ -7,7 +7,7 @@ To identify key regions of productivity based on Facial Recognition, People Coun
 
 2. Change the current working directory to the location where you want the cloned directory.
 
-3. Type ```bash git clone```, and then paste the URL you copied earlier.
+3. Type ```bash git clone```, and then paste the copied URL below.
 
 ```bash
 $ git clone https://github.com/sulaihasubi/Person-Detection-and-Counting
