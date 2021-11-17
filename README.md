@@ -17,6 +17,9 @@ $ git clone https://github.com/sulaihasubi/Person-Detection-and-Counting
 1. Face Recognition, count people based on the number of individuals detected. 
 ![Alt Text](https://github.com/sulaihasubi/Person-Detection-and-Counting/blob/main/video-results/enter-non-productive.gif)
 
+2. Count the dwell time for each of detected person
+![Alt Text](https://github.com/sulaihasubi/Person-Detection-and-Counting/blob/main/video-results/a.gif)
+
 ## References 
 1. [Link to Video Analysis](https://people.revoledu.com/kardi/tutorial/Python/Video+Analysis+using+OpenCV-Python.html)
 2. [Read about Video Analysis](https://cs230.stanford.edu/projects_fall_2019/reports/26262324.pdf)
