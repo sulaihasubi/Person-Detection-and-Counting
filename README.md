@@ -2,6 +2,9 @@
 To identify key regions of productivity based on Facial Recognition, People Counting and Duration (the time spent inside the designated regions) 
 
 [![wakatime](https://wakatime.com/badge/user/7582c4e3-d09e-4202-8f65-4d19e7c9585e/project/00ab9340-4ac4-4c31-aa68-21b0024f14b4.svg)](https://wakatime.com/badge/user/7582c4e3-d09e-4202-8f65-4d19e7c9585e/project/00ab9340-4ac4-4c31-aa68-21b0024f14b4)
+<a href="https://github.com/sulaihasubi/Person-Detection-and-Counting/commits/master">
+        <img alt="Last commit" src="https://img.shields.io/github/last-commit/sulaihasubi/Person-Detection-and-Counting">
+</a>
 
 ## Clone this Repository 
 
